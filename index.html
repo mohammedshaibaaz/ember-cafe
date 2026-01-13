@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ember Café – A place for slow mornings and warm conversations. Thoughtfully sourced coffee, seasonal food, and space to breathe.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="café, coffee, specialty coffee, artisanal food, slow coffee, Brooklyn café, warm atmosphere, thoughtful space">
+    <meta name="author" content="Ember Café">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://embercafe.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://embercafe.com">
+    <meta property="og:title" content="Ember Café – Slow Coffee, Thoughtful Food, Calm Space">
+    <meta property="og:description" content="A place for slow mornings and warm conversations. Thoughtfully sourced coffee, seasonal food, and space to breathe.">
+    <meta property="og:image" content="https://embercafe.com/images/ember-hero-coffee-prep.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Ember Café">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://embercafe.com">
+    <meta name="twitter:title" content="Ember Café – Slow Coffee, Thoughtful Food, Calm Space">
+    <meta name="twitter:description" content="A place for slow mornings and warm conversations. Thoughtfully sourced coffee, seasonal food, and space to breathe.">
+    <meta name="twitter:image" content="https://embercafe.com/images/ember-hero-coffee-prep.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Security -->
+    <!-- Note: Simplified CSP for static site - allows same-origin scripts, inline, Google Analytics, and EmailJS -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com;">
+    <!-- X-Content-Type-Options and X-Frame-Options must be set as HTTP headers by the server -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <title>Ember Café – Slow Coffee, Thoughtful Food, Calm Space</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Performance: DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Performance: Preload Critical Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Cafe",
+      "name": "Ember Café",
+      "description": "A place for slow mornings and warm conversations. Thoughtfully sourced coffee, seasonal food, and space to breathe.",
+      "url": "https://embercafe.com",
+      "logo": "https://embercafe.com/images/ember-logo.png",
+      "image": "https://embercafe.com/images/ember-hero-coffee-prep.png",
+      "telephone": "+1-415-555-1234",
+      "email": "hello@embercafe.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "527 Oak Street",
+        "addressLocality": "Brooklyn",
+        "addressRegion": "NY",
+        "postalCode": "11215",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "servesCuisine": "Coffee & Light Fare",
+      "priceRange": "$$",
+      "acceptsReservations": "False"
+    }
+    </script>
+</head>
+<body>
+    <!-- Accessibility: Skip to Content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="nav" id="navigation" aria-label="Main navigation">
+        <div class="nav__container">
+            <a href="#hero" class="nav__brand" aria-label="Ember Café home">Ember</a>
+            <ul class="nav__menu">
+                <li><a href="#menu" class="nav__link">Menu</a></li>
+                <li><a href="#space" class="nav__link">Space</a></li>
+                <li><a href="#visit" class="nav__link">Visit</a></li>
+            </ul>
+        </div>
+        <div class="nav__indicator" aria-hidden="true"></div>
+    </nav>
+
+    <!-- Mobile Menu Button (sticky bottom on mobile) -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu" aria-expanded="false">
+        <span>Menu</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 12h18M3 6h18M3 18h18"></path>
+        </svg>
+    </button>
+
+    <!-- Main Content -->
+    <main id="main-content">
+    
+    <!-- 1. HERO / ENTRY SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero__background">
+            <img 
+                src="images/ember-hero-coffee-prep.png" 
+                alt="Ember Café – Warm coffee being prepared"
+                width="1200"
+                height="675"
+                loading="lazy"
+            >
+            <div class="hero__overlay"></div>
+        </div>
+        
+        <div class="hero__content">
+            <h1 class="hero__headline">A place for slow mornings and warm conversations.</h1>
+            <p class="hero__subtext">Coffee, pastries, and space to breathe.</p>
+            <a href="#menu" class="hero__cta">View Menu</a>
+        </div>
+    </section>
+
+    <!-- 2. CAFÉ ESSENCE / PHILOSOPHY -->
+    <section class="essence" id="essence">
+        <div class="essence__container">
+            <div class="essence__divider"></div>
+            <p class="essence__text">
+                Thoughtfully sourced coffee, seasonal food, and a space designed for presence. We believe in the power of pause—the moment when a good cup and a quiet corner become a conversation with yourself.
+            </p>
+            <div class="essence__divider"></div>
+        </div>
+    </section>
+
+    <!-- 3. SIGNATURE SELECTION -->
+    <section class="signature" id="signature">
+        <div class="signature__container">
+            <h2 class="signature__title">Signature Selection</h2>
+            
+            <div class="signature__scroll">
+                <article class="signature__card" data-index="0">
+                    <div class="signature__image">
+                        <img 
+                            src="images/ember-signature-house-blend.png"
+                            alt="House Blend coffee"
+                            width="400"
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <h3 class="signature__item-name">House Blend</h3>
+                    <p class="signature__item-desc">Chocolate notes · slow roast</p>
+                    <p class="signature__item-price">$5.00</p>
+                </article>
+
+                <article class="signature__card" data-index="1">
+                    <div class="signature__image">
+                        <img 
+                            src="images/ember-signature-morning-pastry.png"
+                            alt="Seasonal pastry"
+                            width="400"
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <h3 class="signature__item-name">Morning Pastry</h3>
+                    <p class="signature__item-desc">Butter · almond · dark chocolate</p>
+                    <p class="signature__item-price">$4.50</p>
+                </article>
+
+                <article class="signature__card" data-index="2">
+                    <div class="signature__image">
+                        <img 
+                            src="images/ember-signature-espresso-shot.png"
+                            alt="Espresso pour"
+                            width="400"
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <h3 class="signature__item-name">Single Origin Espresso</h3>
+                    <p class="signature__item-desc">Ethiopian · floral · bright</p>
+                    <p class="signature__item-price">$4.00</p>
+                </article>
+
+                <article class="signature__card" data-index="3">
+                    <div class="signature__image">
+                        <img 
+                            src="images/ember-signature-seasonal-plate.png"
+                            alt="Seasonal plate with fresh vegetables and grains"
+                            width="400"
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <h3 class="signature__item-name">Seasonal Plate</h3>
+                    <p class="signature__item-desc">Fresh · local · intentional</p>
+                    <p class="signature__item-price">$9.00</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. THE SPACE / ATMOSPHERE -->
+    <section class="space" id="space">
+        <div class="space__container">
+            <h2 class="space__title">The Space</h2>
+            
+            <div class="space__gallery">
+                <figure class="space__image-wrapper">
+                    <img 
+                        src="images/ember-space-interior-seating.png"
+                        alt="Café interior – warm light, wooden seating"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                    >
+                </figure>
+                
+                <figure class="space__image-wrapper">
+                    <img 
+                        src="images/ember-space-window-seating.png"
+                        alt="Window seating – morning light"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                    >
+                </figure>
+                
+                <figure class="space__image-wrapper">
+                    <img 
+                        src="images/ember-space-espresso-machine.png"
+                        alt="Café counter – espresso machine"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                    >
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MENU (FUNCTIONAL CORE) -->
+    <section class="menu" id="menu">
+        <div class="menu__container">
+            <h2 class="menu__title">Menu</h2>
+            
+            <!-- Category Tabs -->
+            <div class="menu__tabs" role="tablist" aria-label="Menu categories">
+                <button class="menu__tab menu__tab--active" data-category="coffee" role="tab" aria-selected="true" aria-controls="menu-coffee" id="tab-coffee">Coffee</button>
+                <button class="menu__tab" data-category="food" role="tab" aria-selected="false" aria-controls="menu-food" id="tab-food">Food</button>
+                <button class="menu__tab" data-category="seasonal" role="tab" aria-selected="false" aria-controls="menu-seasonal" id="tab-seasonal">Seasonal</button>
+            </div>
+
+            <!-- Coffee Menu -->
+            <div class="menu__category menu__category--active" data-category="coffee" role="tabpanel" aria-labelledby="tab-coffee" id="menu-coffee">
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">House Blend</h3>
+                        <p class="menu__item-desc">Chocolate · smooth · balanced</p>
+                    </div>
+                    <p class="menu__item-price">$5.00</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Single Origin</h3>
+                        <p class="menu__item-desc">Ethiopian · floral · nuanced</p>
+                    </div>
+                    <p class="menu__item-price">$6.00</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Espresso</h3>
+                        <p class="menu__item-desc">Rich · full-bodied · pure</p>
+                    </div>
+                    <p class="menu__item-price">$4.00</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Cortado</h3>
+                        <p class="menu__item-desc">Espresso · velvety steamed milk</p>
+                    </div>
+                    <p class="menu__item-price">$5.50</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Flat White</h3>
+                        <p class="menu__item-desc">Espresso · microfoam · silky</p>
+                    </div>
+                    <p class="menu__item-price">$6.00</p>
+                </div>
+            </div>
+
+            <!-- Food Menu -->
+            <div class="menu__category" data-category="food" role="tabpanel" aria-labelledby="tab-food" id="menu-food" hidden>
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Morning Pastry</h3>
+                        <p class="menu__item-desc">Butter laminate · dark chocolate</p>
+                    </div>
+                    <p class="menu__item-price">$4.50</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Sourdough Toast</h3>
+                        <p class="menu__item-desc">Local bread · house butter · sea salt</p>
+                    </div>
+                    <p class="menu__item-price">$5.00</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Seasonal Grain Bowl</h3>
+                        <p class="menu__item-desc">Greens · roasted vegetables · tahini</p>
+                    </div>
+                    <p class="menu__item-price">$9.50</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Fruit & Nut</h3>
+                        <p class="menu__item-desc">Yogurt · granola · seasonal fruit</p>
+                    </div>
+                    <p class="menu__item-price">$7.00</p>
+                </div>
+            </div>
+
+            <!-- Seasonal Menu -->
+            <div class="menu__category" data-category="seasonal" role="tabpanel" aria-labelledby="tab-seasonal" id="menu-seasonal" hidden>
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Spiced Cortado</h3>
+                        <p class="menu__item-desc">Cinnamon · cardamom · warm</p>
+                    </div>
+                    <p class="menu__item-price">$5.75</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Pumpkin Scone</h3>
+                        <p class="menu__item-desc">Autumn spice · soft crumb</p>
+                    </div>
+                    <p class="menu__item-price">$4.75</p>
+                </div>
+
+                <div class="menu__item">
+                    <div class="menu__item-left">
+                        <h3 class="menu__item-name">Cold Brew Seasonal</h3>
+                        <p class="menu__item-desc">Limited edition · cold · smooth</p>
+                    </div>
+                    <p class="menu__item-price">$5.50</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. STORY / BRAND INTENT -->
+    <section class="story" id="story">
+        <div class="story__container">
+            <div class="story__content">
+                <h2 class="story__title">Our Story</h2>
+                <p class="story__text">
+                    Ember Café was created as a response to fast spaces. We noticed that mornings had become rushed, that conversations had become fragmented, and that there wasn't a place designed around the simple act of pause.
+                </p>
+                <p class="story__text">
+                    We focus on three things: quality coffee sourced with intention, food that tastes like someone cared, and a space that feels like an invitation rather than a transaction. Every detail—the light, the temperature, the sound—is considered.
+                </p>
+                <p class="story__text">
+                    This is not a café. This is a place where slow happens naturally.
+                </p>
+            </div>
+            
+            <div class="story__image">
+                <img 
+                    src="images/ember-story-warm-detail.png"
+                    alt="Ember Café – Detail of warm light and coffee"
+                    width="600"
+                    height="450"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. VISIT INFORMATION -->
+    <section class="visit" id="visit">
+        <div class="visit__container">
+            <h2 class="visit__title">Visit Us</h2>
+            
+            <div class="visit__grid">
+                <div class="visit__info">
+                    <h3 class="visit__label">Location</h3>
+                    <p class="visit__text">527 Oak Street<br>Brooklyn, NY 11215</p>
+                    <a href="https://maps.google.com" class="visit__link">Get Directions</a>
+                </div>
+
+                <div class="visit__info">
+                    <h3 class="visit__label">Hours</h3>
+                    <p class="visit__text">
+                        Monday – Friday: 7 AM – 6 PM<br>
+                        Saturday – Sunday: 8 AM – 5 PM<br>
+                        Closed Mondays in January
+                    </p>
+                </div>
+
+                <div class="visit__info">
+                    <h3 class="visit__label">Contact</h3>
+                    <p class="visit__text">
+                        <a href="tel:+14155551234" class="visit__link">(415) 555-1234</a><br>
+                        <a href="mailto:hello@embercafe.com" class="visit__link">hello@embercafe.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="visit__map">
+                <img 
+                    src="images/ember-visit-storefront-exterior.png"
+                    alt="Ember Café storefront exterior – welcoming entrance"
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CONTACT FORM -->
+    <section class="contact" id="contact">
+        <div class="contact__container">
+            <h2 class="contact__title">Get in Touch</h2>
+            <p class="contact__subtitle">Have questions about our menu, catering, or events? We'd love to hear from you.</p>
+            
+            <form id="contact-form" class="contact__form" novalidate>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label for="name" class="form__label">Name</label>
+                        <input type="text" id="name" name="name" class="form__input" placeholder="Your name">
+                        <span class="form__error" id="name-error"></span>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="email" class="form__label">Email</label>
+                        <input type="text" id="email" name="email" class="form__input" placeholder="your@email.com">
+                        <span class="form__error" id="email-error"></span>
+                    </div>
+                </div>
+                
+                <div class="form__row">
+                    <div class="form__group">
+                        <label for="phone" class="form__label">Phone <span class="form__optional">(optional)</span></label>
+                        <input type="tel" id="phone" name="phone" class="form__input" placeholder="(123) 456-7890">
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="inquiry-type" class="form__label">Inquiry Type</label>
+                        <select id="inquiry-type" name="inquiry_type" class="form__select">
+                            <option value="">Select an option</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="catering">Catering</option>
+                            <option value="event">Event Booking</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                        <span class="form__error" id="inquiry-error"></span>
+                    </div>
+                </div>
+                
+                <div class="form__group form__group--full">
+                    <label for="message" class="form__label">Message</label>
+                    <textarea id="message" name="message" class="form__textarea" placeholder="Tell us how we can help..." maxlength="500" rows="6"></textarea>
+                    <span class="form__char-count"><span id="char-count">0</span>/500</span>
+                    <span class="form__error" id="message-error"></span>
+                </div>
+                
+                <button type="submit" class="form__submit" id="submit-btn">Send Message</button>
+                
+                <div class="form__message" id="form-message" style="display: none;"></div>
+            </form>
+        </div>
+    </section>
+    
+    </main>
+    <!-- End Main Content -->
+
+    <!-- 9. FOOTER -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__brand">Ember Café</div>
+            <p class="footer__address">527 Oak Street, Brooklyn, NY 11215</p>
+            <div class="footer__socials">
+                <a href="#" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 9 5.5 9 5.5"></path>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer__copyright">&copy; 2025 Ember Café. All rights reserved.</p>
+            <p class="footer__demo">Demo Project – Café website built to showcase web development skills</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
