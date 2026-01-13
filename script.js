@@ -514,7 +514,7 @@ class ContactFormController {
     }
     
     init() {
-        // Initialize EmailJS with your public key
+        
         emailjs.init('a671ed45-5144-4f14-bb0d-6de13b4f77b44');
         
         // Character counter for message field
