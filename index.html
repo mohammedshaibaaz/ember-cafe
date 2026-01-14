@@ -491,13 +491,13 @@
                     <div class="form__group">
                         <label for="name" class="form__label">Name</label>
                         <input type="text" id="name" name="name" class="form__input" placeholder="Your name">
-                        <span class="form__error" id="name-error"></span>
+                        <span class="form__error" id="name-error" role="alert" aria-live="polite"></span>
                     </div>
                     
                     <div class="form__group">
                         <label for="email" class="form__label">Email</label>
                         <input type="text" id="email" name="email" class="form__input" placeholder="your@email.com">
-                        <span class="form__error" id="email-error"></span>
+                        <span class="form__error" id="email-error" role="alert" aria-live="polite"></span>
                     </div>
                 </div>
                 
@@ -516,7 +516,7 @@
                             <option value="event">Event Booking</option>
                             <option value="feedback">Feedback</option>
                         </select>
-                        <span class="form__error" id="inquiry-error"></span>
+                        <span class="form__error" id="inquiry-error" role="alert" aria-live="polite"></span>
                     </div>
                 </div>
                 
@@ -524,7 +524,7 @@
                     <label for="message" class="form__label">Message</label>
                     <textarea id="message" name="message" class="form__textarea" placeholder="Tell us how we can help..." maxlength="500" rows="6"></textarea>
                     <span class="form__char-count"><span id="char-count">0</span>/500</span>
-                    <span class="form__error" id="message-error"></span>
+                    <span class="form__error" id="message-error" role="alert" aria-live="polite"></span>
                 </div>
                 
                 <button type="submit" class="form__submit" id="submit-btn">Send Message</button>

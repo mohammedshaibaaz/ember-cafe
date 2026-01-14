@@ -643,6 +643,10 @@ class ContactFormController {
     
     showError(input, errorElement, message) {
         input.classList.add('error');
+        input.setAttribute('aria-invalid', 'true');
+        if (errorElement && errorElement.id) {
+            input.setAttribute('aria-describedby', errorElement.id);
+        }
         if (errorElement) {
             errorElement.textContent = message;
             errorElement.classList.add('show');
@@ -651,6 +655,10 @@ class ContactFormController {
     
     clearError(input, errorElement) {
         input.classList.remove('error');
+        input.removeAttribute('aria-invalid');
+        if (errorElement && errorElement.id && input.getAttribute('aria-describedby') === errorElement.id) {
+            input.removeAttribute('aria-describedby');
+        }
         if (errorElement) {
             errorElement.textContent = '';
             errorElement.classList.remove('show');
