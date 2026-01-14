@@ -63,6 +63,9 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     
+    <!-- Performance: Preload Hero Image -->
+    <link rel="preload" href="images/ember-hero-coffee-prep.png" as="image" fetchpriority="high">
+    
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
     
@@ -142,7 +145,7 @@
                 alt="Ember Café – Warm coffee being prepared"
                 width="1200"
                 height="675"
-                loading="lazy"
+                fetchpriority="high"
             >
             <div class="hero__overlay"></div>
         </div>
@@ -178,7 +181,7 @@
                             alt="House Blend coffee"
                             width="400"
                             height="300"
-                            loading="lazy"
+                            decoding="async"
                         >
                     </div>
                     <h3 class="signature__item-name">House Blend</h3>
@@ -193,7 +196,7 @@
                             alt="Seasonal pastry"
                             width="400"
                             height="300"
-                            loading="lazy"
+                            decoding="async"
                         >
                     </div>
                     <h3 class="signature__item-name">Morning Pastry</h3>
@@ -209,6 +212,7 @@
                             width="400"
                             height="300"
                             loading="lazy"
+                            decoding="async"
                         >
                     </div>
                     <h3 class="signature__item-name">Single Origin Espresso</h3>
@@ -224,6 +228,7 @@
                             width="400"
                             height="300"
                             loading="lazy"
+                            decoding="async"
                         >
                     </div>
                     <h3 class="signature__item-name">Seasonal Plate</h3>
@@ -247,6 +252,8 @@
                         width="800"
                         height="600"
                         loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
                     >
                 </figure>
                 
@@ -257,6 +264,8 @@
                         width="800"
                         height="600"
                         loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
                     >
                 </figure>
                 
@@ -267,6 +276,8 @@
                         width="800"
                         height="600"
                         loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
                     >
                 </figure>
             </div>
@@ -415,6 +426,8 @@
                     width="600"
                     height="450"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                 >
             </div>
         </div>
@@ -457,6 +470,8 @@
                     width="800"
                     height="450"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                 >
             </div>
         </div>

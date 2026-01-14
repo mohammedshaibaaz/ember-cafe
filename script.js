@@ -265,7 +265,7 @@ class LazyLoadImages {
                     }
                 });
             }, {
-                rootMargin: '50px'
+                rootMargin: '400px'
             });
 
             this.images.forEach(img => observer.observe(img));
