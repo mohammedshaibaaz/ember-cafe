@@ -515,8 +515,6 @@ class ContactFormController {
     
     init() {
         
-        emailjs.init('a671ed45-5144-4f14-bb0d-6de13b4f77b44');
-        
         // Character counter for message field
         this.messageInput.addEventListener('input', () => {
             this.charCount.textContent = this.messageInput.value.length;
@@ -673,51 +671,70 @@ class ContactFormController {
         this.setLoadingState(true);
         
         try {
-            // Send email via EmailJS
-            const templateParams = {
-                from_name: this.nameInput.value.trim(),
-                from_email: this.emailInput.value.trim(),
-                phone: this.phoneInput.value.trim() || 'Not provided',
-                inquiry_type: this.inquiryInput.options[this.inquiryInput.selectedIndex].text,
-                message: this.messageInput.value.trim()
-            };
-            
-            const response = await emailjs.send(
-                'YOUR_SERVICE_ID',      // Replace with your EmailJS service ID
-                'YOUR_TEMPLATE_ID',     // Replace with your EmailJS template ID
-                templateParams
-            );
-            
-            // Track successful submission in GA4
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'form_submission', {
-                    event_category: 'Contact',
-                    event_label: templateParams.inquiry_type,
-                    value: 1
-                });
+            // Build payload for Web3Forms
+            const formData = new FormData(this.form);
+            const inquiryText = this.inquiryInput.options[this.inquiryInput.selectedIndex].text;
+            formData.set('subject', `New Contact – ${inquiryText}`);
+            formData.set('from_name', this.nameInput.value.trim());
+            formData.set('from_email', this.emailInput.value.trim());
+            formData.set('phone', this.phoneInput.value.trim() || 'Not provided');
+            formData.set('inquiry_type', inquiryText);
+            formData.set('message', this.messageInput.value.trim());
+
+            const json = Object.fromEntries(formData);
+
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(json)
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                // Track successful submission in GA4
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submission', {
+                        event_category: 'Contact',
+                        event_label: inquiryText,
+                        value: 1
+                    });
+                }
+
+                // Show success message
+                this.showMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+
+                // Reset form
+                this.form.reset();
+                this.charCount.textContent = '0';
+            } else {
+                console.error('Web3Forms error:', data);
+
+                // Track error in GA4
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_error', {
+                        event_category: 'Contact',
+                        event_label: data.message || 'Unknown error',
+                        value: 0
+                    });
+                }
+
+                this.showMessage('Oops! Something went wrong. Please try again or email us directly at hello@embercafe.com', 'error');
             }
-            
-            // Show success message
-            this.showMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
-            
-            // Reset form
-            this.form.reset();
-            this.charCount.textContent = '0';
-            
         } catch (error) {
-            console.error('EmailJS error:', error);
-            
-            // Track error in GA4
+            console.error('Web3Forms request failed:', error);
+
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'form_error', {
                     event_category: 'Contact',
-                    event_label: error.text || 'Unknown error',
+                    event_label: error.message || 'Network error',
                     value: 0
                 });
             }
-            
-            // Show error message
-            this.showMessage('Oops! Something went wrong. Please try again or email us directly at hello@embercafe.com', 'error');
+
+            this.showMessage('Network error. Please try again in a moment or email us at hello@embercafe.com', 'error');
         } finally {
             this.setLoadingState(false);
         }

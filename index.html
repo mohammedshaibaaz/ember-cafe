@@ -34,8 +34,8 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
     <!-- Security -->
-    <!-- Note: Simplified CSP for static site - allows same-origin scripts, inline, Google Analytics, and EmailJS -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com;">
+    <!-- Note: Simplified CSP for static site - allows same-origin scripts, inline, Google Analytics, and Web3Forms -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com;">
     <!-- X-Content-Type-Options and X-Frame-Options must be set as HTTP headers by the server -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
@@ -50,8 +50,7 @@
       gtag('config', 'G-B96XQ3K1RW');
     </script>
     
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- EmailJS SDK removed; using Web3Forms -->
     
     <!-- Performance: DNS Prefetch & Preconnect -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -483,7 +482,11 @@
             <h2 class="contact__title">Get in Touch</h2>
             <p class="contact__subtitle">Have questions about our menu, catering, or events? We'd love to hear from you.</p>
             
-            <form id="contact-form" class="contact__form" novalidate>
+            <form id="contact-form" class="contact__form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                <!-- Web3Forms configuration -->
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="subject" value="New Contact – Ember Café">
+                <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
                 <div class="form__row">
                     <div class="form__group">
                         <label for="name" class="form__label">Name</label>
