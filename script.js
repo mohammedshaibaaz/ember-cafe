@@ -165,33 +165,104 @@ class MenuController {
 class MobileMenuButton {
     constructor() {
         this.btn = document.getElementById('mobileMenuBtn');
+        this.mobileNav = document.getElementById('mobileNav');
+        this.backdrop = document.getElementById('mobileNavBackdrop');
         this.init();
     }
 
     init() {
         // Pulse animation plays once on load (via CSS animation)
-        this.btn.addEventListener('click', () => {
-            this.openMenu();
+        this.btn.addEventListener('click', (e) => {
+            this.toggleMenu(e);
+        });
+
+        // If mobile nav exists, attach link handlers to close the nav on navigation
+        if (this.mobileNav) {
+            const links = this.mobileNav.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Close nav and update accessibility attributes
+                    this.closeMenu();
+
+                    // Haptic feedback on selection
+                    if (navigator.vibrate) navigator.vibrate(10);
+                });
+            });
+        }
+        
+        // Backdrop click closes the nav
+        if (this.backdrop) {
+            this.backdrop.addEventListener('click', () => this.closeMenu());
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.btn.getAttribute('aria-expanded') === 'true') {
+                this.closeMenu();
+            }
         });
     }
 
-    openMenu() {
-        // Update aria-expanded attribute
+    toggleMenu() {
         const isExpanded = this.btn.getAttribute('aria-expanded') === 'true';
-        this.btn.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-        
-        // Smooth scroll to menu section
-        document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-        
-        // Reset aria-expanded after navigation
-        setTimeout(() => {
-            this.btn.setAttribute('aria-expanded', 'false');
-        }, 1000);
-        
-        // Haptic feedback
-        if (navigator.vibrate) {
-            navigator.vibrate(20);
+
+        // If we have a mobile-nav element, toggle its visibility and accessibility
+        if (this.mobileNav) {
+            if (isExpanded) {
+                this.closeMenu();
+            } else {
+                this.openNav();
+            }
+            return;
         }
+
+        // Fallback behavior: if mobileNav is missing, scroll to #menu (legacy behavior)
+        this.btn.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+        document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => this.btn.setAttribute('aria-expanded', 'false'), 1000);
+        if (navigator.vibrate) navigator.vibrate(20);
+    }
+
+    openNav() {
+        this.btn.setAttribute('aria-expanded', 'true');
+        this.btn.classList.add('open');
+        this.mobileNav.classList.add('open');
+        this.mobileNav.setAttribute('aria-hidden', 'false');
+
+        if (this.backdrop) {
+            this.backdrop.classList.add('open');
+            this.backdrop.setAttribute('aria-hidden', 'false');
+        }
+
+        // Prevent body scroll while nav open (mobile only)
+        document.documentElement.style.overflow = 'hidden';
+
+        // Move focus to the first link for accessibility
+        const firstLink = this.mobileNav.querySelector('a');
+        if (firstLink) firstLink.focus();
+
+        // Haptic feedback
+        if (navigator.vibrate) navigator.vibrate(20);
+    }
+
+    closeMenu() {
+        this.btn.setAttribute('aria-expanded', 'false');
+        this.btn.classList.remove('open');
+        if (this.mobileNav) {
+            this.mobileNav.classList.remove('open');
+            this.mobileNav.setAttribute('aria-hidden', 'true');
+        }
+
+        if (this.backdrop) {
+            this.backdrop.classList.remove('open');
+            this.backdrop.setAttribute('aria-hidden', 'true');
+        }
+
+        // Restore body scroll
+        document.documentElement.style.overflow = '';
+
+        // Return focus to the button for keyboard users
+        this.btn.focus();
     }
 }
 

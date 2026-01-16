@@ -128,10 +128,24 @@
     <!-- Mobile Menu Button (sticky bottom on mobile) -->
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu" aria-expanded="false">
         <span>Menu</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M3 12h18M3 6h18M3 18h18"></path>
+        <svg class="hamburger" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path class="bar bar1" d="M3 6h18"></path>
+            <path class="bar bar2" d="M3 12h18"></path>
+            <path class="bar bar3" d="M3 18h18"></path>
         </svg>
     </button>
+
+    <!-- Mobile-only navigation (hidden by default; toggled by mobile menu button) -->
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Mobile navigation">
+        <ul class="mobile-nav__list">
+            <li><a href="#menu" class="mobile-nav__link">Menu</a></li>
+            <li><a href="#space" class="mobile-nav__link">Space</a></li>
+            <li><a href="#visit" class="mobile-nav__link">Visit</a></li>
+        </ul>
+    </nav>
+
+    <!-- Backdrop for mobile nav (appears when nav is open) -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
 
     <!-- Main Content -->
     <main id="main-content">
